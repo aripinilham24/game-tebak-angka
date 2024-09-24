@@ -17,6 +17,11 @@
         <p id="skor"></p>
     </div>
 
+    <div class="gameOver" style="display: none;">
+        <h1 id="notif-go"></h1>
+        <button type="submit" onclick="penjumlahan()">Ulangi</button>
+    </div>
+
     <script>
         function getRandom(min, max) {
             min = Math.ceil(min)
@@ -34,15 +39,23 @@
             if (input === jawaban) {
                 document.getElementById("notif").innerHTML = 'Jawaban Benar!'
                 skor += 10
+                resetSoal();
             } else {
-                document.getElementById("notif").innerHTML = 'Jawaban Salah!'
+                document.getElementById("notif").innerHTML = `Jawaban Salah!`
+                setTimeout(() => {
+                    document.querySelector('.gameOver').style.display = 'flex'; // Perbaikan di sini
+                    document.getElementById("notif").innerHTML = `Game Over!`
+                    document.querySelector('.penjumlahan').style.display = 'none'; // Perbaikan di sini
+                }, 2500);
+
             }
 
-            setTimeout(()=> (document.getElementById('notif').innerHTML=''),2500)
+
+            setTimeout(() => (document.getElementById('notif').innerHTML = ''), 2500)
 
             document.getElementById("skor").innerHTML = `skor: ${skor}`
 
-            resetSoal();
+
         }
 
         function resetSoal() {
@@ -53,11 +66,13 @@
             document.getElementById("input").value = '';
         }
 
-        document.getElementById('input').addEventListener('keydown', function(event) {
-                if(event.key === 'Enter') {
-                    penjumlahan()
-                }
+        document.getElementById('input').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                penjumlahan()
+            }
         })
+
+
     </script>
 </body>
 
