@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Penjumlahan</title>
     <link rel="stylesheet" href="main.css">
+    <script defer src="penjumlahan.js" type="module"></script>
 </head>
 
 <body>
@@ -21,59 +22,6 @@
         <h1 id="notif-go"></h1>
         <button type="submit" onclick="ulang()">Ulangi</button>
     </div>
-
-    <script>
-        function getRandom(min, max) {
-            min = Math.ceil(min)
-            max = Math.ceil(max)
-            return Math.floor(Math.random() * (max - min + 1)) + min
-        }
-        let skor = 0
-
-        let bil_a = getRandom(0, 100)
-        let bil_b = getRandom(0, 100)
-        let jawaban = bil_a + bil_b
-        document.getElementById("label-penjumlahan").innerHTML = `jawaban dari: ${bil_a} + ${bil_b}`
-        function penjumlahan() {
-            let input = parseInt(document.getElementById("input").value)
-            if (input === jawaban) {
-                document.getElementById("notif").innerHTML = 'Jawaban Benar!'
-                skor += 10
-                resetSoal();
-            } else {
-                document.getElementById("notif").innerHTML = `Jawaban Salah!`
-                setTimeout(() => {
-                    document.querySelector('.gameOver').style.display = 'flex';
-                    document.getElementById("notif-go").innerHTML = `Game Over!`
-                    document.querySelector('.penjumlahan').style.display = 'none';
-                }, 1000);
-            }
-            setTimeout(() => (document.getElementById('notif').innerHTML = ''), 2500)
-            document.getElementById("skor").innerHTML = `skor: ${skor}`
-        }
-
-        function resetSoal() {
-            bil_a = getRandom(0, 100);
-            bil_b = getRandom(0, 100);
-            jawaban = bil_a + bil_b;
-            document.getElementById("label-penjumlahan").innerHTML = `Jawaban dari: ${bil_a} + ${bil_b}`;
-            document.getElementById("input").value = '';
-        }
-
-        function ulang() {
-            skor = 0
-            resetSoal()
-            document.getElementById("skor").innerHTML = `skor: ${skor}`
-            document.querySelector('.penjumlahan').style.display = 'flex';
-            document.querySelector('.gameOver').style.display = 'none';
-        }
-
-        document.getElementById('input').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                penjumlahan()
-            }
-        })
-    </script>
 </body>
 
 </html>
