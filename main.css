@@ -59,6 +59,10 @@ a, h1, p {
     div {
         width: 60%;
     }
+    input {
+        background-color: white;
+        color: black;
+    }
 }
 @media screen and (max-width: 300px) {
     body {
