@@ -54,3 +54,9 @@ a, h1, p {
     text-decoration: none;
     color: #FFEB55;
 }
+
+@media screen and (max-width: 768px) {
+    div {
+        width: 60%;
+    }
+}
