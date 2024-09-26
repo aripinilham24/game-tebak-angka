@@ -60,3 +60,17 @@ a, h1, p {
         width: 60%;
     }
 }
+@media screen and (max-width: 300px) {
+    body {
+        padding: 20px;
+    }
+    input {
+        max-width: 130px;
+    }
+    label {
+        font-size:13px;
+    }
+    div {
+        width: 100%;
+    }
+}
